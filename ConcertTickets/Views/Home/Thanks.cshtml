@@ -1,0 +1,38 @@
+﻿@model ConcertTickets.Models.CustomerResponse
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Thanks</title>
+</head>
+<body>
+    <div>
+        <h1>Thank you for your order, @Model.Name!</h1>
+      
+        Order Info:<br />
+        <em>
+        Name: @Model.Name<br />
+        Address: @Model.Address<br />
+        Email: @Model.Email<br />
+        Show: @Model.Show<br />
+        # of Tickets: @Model.Quantity<br />
+        </em><br />
+
+        @if (Model.MailTickets == true)
+        {
+            @:Your tickets should arrive in the mail within 5 - 7 business days.
+        }
+        else
+        {
+            @:Your tickets will be waiting for you at the show.
+        }
+        
+    </div>
+</body>
+</html>

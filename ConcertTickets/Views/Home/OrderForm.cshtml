@@ -1,0 +1,46 @@
+﻿@model ConcertTickets.Models.CustomerResponse
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="Stylesheet" type="text/css" href="~/Content/Site.css" />
+    <title>OrderForm</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary();
+        <p>Your Name: @Html.TextBoxFor(x => x.Name)</p>
+        <p> Your Address: @Html.TextBoxFor(x => x.Address)</p>
+        <p>Your Email: @Html.TextBoxFor(x => x.Email)</p>
+        <p>
+        Which show would you like to purchase tickets for?
+        @Html.DropDownListFor(x => x.Show, new[]{
+            new SelectListItem() {Text = "Danny McDaniels",
+                Value = "Danny McDaniels"},
+            new SelectListItem() {Text = "Soul Mama",
+                Value = "Soul Mama"},
+            new SelectListItem() {Text = "Justin Badber",
+                Value = "Justin Badber"}
+            }, "Choose an option")
+       </p>
+        <p>Quantity: @Html.TextBoxFor(x => x.Quantity)</p>
+        <p>
+        Would You like the tickets mailed to you?
+        @Html.DropDownListFor(x => x.MailTickets, new[]{
+            new SelectListItem() {Text = "Yes, Mail my tickets",
+                Value = bool.TrueString},
+            new SelectListItem() {Text = "No, I'll pick them up at the venue",
+                Value = bool.FalseString}
+            }, "Choose an option")
+       </p>
+       <input type="submit" value="Submit Order" />
+    }
+</body>
+</html>
